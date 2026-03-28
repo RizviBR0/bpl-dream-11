@@ -34,8 +34,8 @@ export default function Register() {
         err.code === 'auth/email-already-in-use'
           ? 'This email is already registered.'
           : err.code === 'auth/invalid-email'
-          ? 'Invalid email address.'
-          : 'Registration failed. Please try again.';
+            ? 'Invalid email address.'
+            : 'Registration failed. Please try again.';
       toast.error(msg);
     } finally {
       setLoading(false);
@@ -43,8 +43,8 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-4">
-      <div className="bg-white rounded-2xl shadow-lg w-full max-w-md p-8 space-y-6">
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="bg-linear-to-b from-[#f8ead1] to-[#FEFEFE] border border-gray-500/10 rounded-2xl shadow-lg shadow-[#f8ead13a] w-full max-w-md p-8 space-y-6">
         <div className="text-center">
           <img className="h-16 mx-auto mb-3" src={logo} alt="BPL Dream 11" />
           <h1 className="text-2xl font-bold text-[#131313]">Create Account</h1>
@@ -59,7 +59,7 @@ export default function Register() {
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               placeholder="Your name"
-              className="w-full border border-[#131313]/15 rounded-xl px-4 py-3 outline-none focus:border-[#E7FE29] focus:ring-1 focus:ring-[#E7FE29] text-[#131313]"
+              className="w-full border border-[#131313]/15 rounded-xl px-4 py-3 outline-none text-[#131313]"
             />
           </div>
 
@@ -70,7 +70,7 @@ export default function Register() {
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               placeholder="you@example.com"
-              className="w-full border border-[#131313]/15 rounded-xl px-4 py-3 outline-none focus:border-[#E7FE29] focus:ring-1 focus:ring-[#E7FE29] text-[#131313]"
+              className="w-full border border-[#131313]/15 rounded-xl px-4 py-3 outline-none text-[#131313]"
             />
           </div>
 
@@ -81,7 +81,7 @@ export default function Register() {
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               placeholder="Min. 6 characters"
-              className="w-full border border-[#131313]/15 rounded-xl px-4 py-3 outline-none focus:border-[#E7FE29] focus:ring-1 focus:ring-[#E7FE29] text-[#131313]"
+              className="w-full border border-[#131313]/15 rounded-xl px-4 py-3 outline-none text-[#131313]"
             />
           </div>
 
@@ -94,7 +94,7 @@ export default function Register() {
               value={form.confirm}
               onChange={(e) => setForm({ ...form, confirm: e.target.value })}
               placeholder="Repeat password"
-              className="w-full border border-[#131313]/15 rounded-xl px-4 py-3 outline-none focus:border-[#E7FE29] focus:ring-1 focus:ring-[#E7FE29] text-[#131313]"
+              className="w-full border border-[#131313]/15 rounded-xl px-4 py-3 outline-none text-[#131313]"
             />
           </div>
 

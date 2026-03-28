@@ -68,7 +68,7 @@ const Footer = () => {
                                     { name: 'Schedules', to: '/schedules' },
                                 ].map((l) => (
                                     <li key={l.to}>
-                                        <NavLink to={l.to} className='text-white/60 hover:text-white hover:underline transition'>
+                                        <NavLink to={l.to} onClick={() => window.scrollTo(0, 0)} className='text-white/60 hover:text-white hover:underline transition'>
                                             {l.name}
                                         </NavLink>
                                     </li>
@@ -99,7 +99,7 @@ const Footer = () => {
             </div>
 
             <div className='p-7 border-t border-[#FFFFFF]/15 flex items-center justify-center'>
-                  <p className='text-center text-white/60'>© {new Date().getFullYear()} BPL Dream 11. All Rights Reserved.</p>
+                <p className='text-center text-white/60'>© {new Date().getFullYear()} BPL Dream 11. All Rights Reserved.</p>
             </div>
         </footer>
     );

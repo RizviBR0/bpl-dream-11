@@ -1,7 +1,7 @@
 import { FaUser } from 'react-icons/fa';
 import { IoIosFlag } from 'react-icons/io';
 import { toast } from 'react-toastify';
-import { useTeam } from '../../context/TeamContext';
+import { useTeam, ROLE_RULES } from '../../context/TeamContext';
 
 const roleColors = {
   Batsman: 'bg-blue-50 text-blue-700',
@@ -11,7 +11,7 @@ const roleColors = {
 };
 
 const Card = ({ player }) => {
-  const { coin, addPlayer, removePlayer, isSelected, selectedPlayers, teamSize, getRoleCount, ROLE_RULES } = useTeam();
+  const { coin, addPlayer, removePlayer, isSelected, selectedPlayers, teamSize, getRoleCount } = useTeam();
   const selected = isSelected(player);
 
   const handleChoosePlayer = () => {
@@ -45,13 +45,12 @@ const Card = ({ player }) => {
 
   return (
     <div
-      className={`rounded-lg overflow-hidden border p-5 space-y-4 transition ${
-        selected ? 'border-[#E7FE29] bg-[#E7FE29]/5' : 'border-[#131313]/10'
-      }`}
+      className={`rounded-lg overflow-hidden border p-5 space-y-4 transition ${selected ? 'border-[#E7FE29] bg-[#E7FE29]/5' : 'border-[#131313]/10'
+        }`}
     >
       <div className="relative">
         <img
-          className="w-full h-60 object-cover object-top rounded-md bg-gray-200/40"
+          className="w-full h-52 sm:h-60 object-cover object-center rounded-md bg-gray-200/40"
           src={player.image}
           alt={player.name}
         />
