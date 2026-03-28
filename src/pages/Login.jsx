@@ -26,8 +26,8 @@ export default function Login() {
         err.code === 'auth/invalid-credential'
           ? 'Invalid email or password.'
           : err.code === 'auth/user-not-found'
-          ? 'No account found with that email.'
-          : 'Login failed. Please try again.';
+            ? 'No account found with that email.'
+            : 'Login failed. Please try again.';
       toast.error(msg);
     } finally {
       setLoading(false);
@@ -35,8 +35,8 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-4">
-      <div className="bg-white rounded-2xl shadow-lg w-full max-w-md p-8 space-y-6">
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="bg-linear-to-b from-[#e4f9ff] to-[#FEFEFE] border border-gray-500/10 rounded-2xl shadow-lg shadow-[#8feeff3f] w-full max-w-md p-8 space-y-6">
         <div className="text-center">
           <img className="h-16 mx-auto mb-3" src={logo} alt="BPL Dream 11" />
           <h1 className="text-2xl font-bold text-[#131313]">Sign In</h1>
@@ -51,7 +51,7 @@ export default function Login() {
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               placeholder="you@example.com"
-              className="w-full border border-[#131313]/15 rounded-xl px-4 py-3 outline-none focus:border-[#E7FE29] focus:ring-1 focus:ring-[#E7FE29] text-[#131313]"
+              className="w-full border border-[#131313]/15 rounded-xl px-4 py-3 outline-none text-[#131313]"
             />
           </div>
 
@@ -62,7 +62,7 @@ export default function Login() {
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               placeholder="••••••••"
-              className="w-full border border-[#131313]/15 rounded-xl px-4 py-3 outline-none focus:border-[#E7FE29] focus:ring-1 focus:ring-[#E7FE29] text-[#131313]"
+              className="w-full border border-[#131313]/15 rounded-xl px-4 py-3 outline-none text-[#131313]"
             />
           </div>
 

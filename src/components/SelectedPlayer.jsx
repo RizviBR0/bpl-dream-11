@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { MdOutlineDelete } from "react-icons/md";
-import { doc, setDoc } from 'firebase/firestore';
-import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { useTeam, ROLE_RULES, INITIAL_COINS } from '../context/TeamContext';
 import { toast } from 'react-toastify';
@@ -32,13 +30,16 @@ const SelectedPlayer = ({ setActiveTab }) => {
     }
     setSaving(true);
     try {
-      await setDoc(doc(db, 'teams', user.uid), {
+      await new Promise(resolve => setTimeout(resolve, 600));
+      const savedTeams = JSON.parse(localStorage.getItem('mock_teams') || '{}');
+      savedTeams[user.uid] = {
         players: selectedPlayers,
         coinsSpent: INITIAL_COINS - coin,
         savedAt: new Date().toISOString(),
         uid: user.uid,
         displayName: user.displayName || user.email,
-      });
+      };
+      localStorage.setItem('mock_teams', JSON.stringify(savedTeams));
       toast.success('🏆 Dream team saved! Good luck!');
       setConfirmOpen(false);
     } catch {
@@ -78,10 +79,6 @@ const SelectedPlayer = ({ setActiveTab }) => {
           <div className="text-center">
             <p className="text-2xl font-bold">{coin.toLocaleString()}</p>
             <p className="text-xs text-white/60">Coins Left</p>
-          </div>
-          <div className="text-center">
-            <p className="text-2xl font-bold">{coinsSpent.toLocaleString()}</p>
-            <p className="text-xs text-white/60">Coins Spent</p>
           </div>
         </div>
 
@@ -146,22 +143,23 @@ const SelectedPlayer = ({ setActiveTab }) => {
       <div className="mt-6 flex flex-wrap gap-3 items-center justify-between">
         <div className="flex gap-3 flex-wrap">
           <Button value="Add Players" onSelect={() => setActiveTab("available")} />
-          <button
-            onClick={handleReset}
-            className="px-4 py-2 border border-red-200 text-red-500 font-semibold rounded-lg hover:bg-red-50 transition text-sm cursor-pointer"
-          >
-            Reset Team
-          </button>
+
+          <div className='mt-2 border border-red-400/20 rounded-lg p-2 inline-block cursor-pointer' onClick={handleReset}>
+            <button
+              className='bg-red-500 text-white rounded-sm px-3 py-2 font-bold text-base shadow-[inset_4px_4px_20px_0px_rgba(19,19,19,0.30)] pointer-events-none'
+            >
+              Reset Team
+            </button>
+          </div>
         </div>
 
         <button
           onClick={() => setConfirmOpen(true)}
           disabled={!canConfirm()}
-          className={`px-6 py-3 rounded-xl font-bold transition text-sm ${
-            canConfirm()
-              ? 'bg-[#131313] text-white hover:bg-[#131313]/80 cursor-pointer'
-              : 'bg-[#131313]/20 text-[#131313]/40 cursor-not-allowed'
-          }`}
+          className={`px-6 py-3 rounded-xl font-bold transition text-sm ${canConfirm()
+            ? 'bg-[#131313] text-white hover:bg-[#131313]/80 cursor-pointer'
+            : 'bg-[#131313]/20 text-[#131313]/40 cursor-not-allowed'
+            }`}
         >
           {(() => {
             const remaining = teamSize - selectedPlayers.length;

@@ -39,10 +39,9 @@ const Navbar = () => {
                   to={link.to}
                   end={link.to === '/'}
                   className={({ isActive }) =>
-                    `text-base transition ${
-                      isActive
-                        ? 'text-[#131313] font-semibold'
-                        : 'text-[#131313]/60 hover:text-[#131313]'
+                    `text-base transition ${isActive
+                      ? 'text-[#131313] font-semibold'
+                      : 'text-[#131313]/60 hover:text-[#131313]'
                     }`
                   }
                 >
@@ -55,8 +54,8 @@ const Navbar = () => {
 
         <div className="flex items-center gap-3">
           {user && (
-            <button className="flex justify-center items-center space-x-2 w-fit border border-[#131313]/10 rounded-lg px-4 py-3">
-              <span className="font-bold text-xl">{coin.toLocaleString()} Coins</span>
+            <button className="flex justify-center items-center space-x-2 w-fit border border-[#131313]/10 rounded-lg px-3 py-2">
+              <span className="font-bold text-lg">{coin.toLocaleString()} Coins</span>
               <img className="w-5" src={dollarImg} alt="Coins" />
             </button>
           )}
@@ -66,10 +65,10 @@ const Navbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="flex items-center gap-2 border border-[#131313]/10 rounded-lg px-3 py-2.5 cursor-pointer hover:bg-[#131313]/5 transition"
+                className="flex items-center gap-2 border border-[#131313]/10 rounded-lg px-3 py-2 cursor-pointer hover:bg-[#131313]/5 transition"
               >
-                <FaUser className="text-[#131313]/60" />
-                <span className="text-sm font-semibold text-[#131313] max-w-24 truncate hidden sm:block">
+                <FaUser className="text-[#131313]/60 text-lg" />
+                <span className="text-lg font-semibold text-[#131313] max-w-24 truncate hidden sm:block">
                   {user.displayName || user.email}
                 </span>
               </div>

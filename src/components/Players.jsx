@@ -18,7 +18,7 @@ const TEAMS = [
 
 const Players = ({ playersPromise }) => {
   const players = use(playersPromise);
-  const { selectedPlayers, teamSize, setTeamSize, getCompositionWarnings } = useTeam();
+  const { selectedPlayers, teamSize, setTeamSize } = useTeam();
   const [activeTab, setActiveTab] = useState("available");
   const [searchQuery, setSearchQuery] = useState("");
   const [roleFilter, setRoleFilter] = useState("All");
@@ -42,8 +42,6 @@ const Players = ({ playersPromise }) => {
       if (sortBy === 'rating') return parseInt(b.rating) - parseInt(a.rating);
       return 0;
     });
-
-  const warnings = getCompositionWarnings();
 
   return (
     <>
@@ -113,16 +111,6 @@ const Players = ({ playersPromise }) => {
               ))}
             </div>
           </div>
-        </div>
-      )}
-
-      {/* Composition warnings */}
-      {activeTab === "selected" && warnings.length > 0 && (
-        <div className="mt-4 p-4 border border-amber-200 bg-amber-50 rounded-xl">
-          <p className="font-semibold text-amber-700 text-sm mb-1">⚠️ Team incomplete:</p>
-          <ul className="list-disc list-inside text-amber-600 text-sm space-y-0.5">
-            {warnings.map((w, i) => <li key={i}>{w}</li>)}
-          </ul>
         </div>
       )}
 
