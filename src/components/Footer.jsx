@@ -99,7 +99,7 @@ const Footer = () => {
             </div>
 
             <div className='p-7 border-t border-[#FFFFFF]/15 flex items-center justify-center'>
-                <p className='text-center text-white/60'>© 2025 BPL Dream 11. All Rights Reserved.</p>
+                  <p className='text-center text-white/60'>© {new Date().getFullYear()} BPL Dream 11. All Rights Reserved.</p>
             </div>
         </footer>
     );

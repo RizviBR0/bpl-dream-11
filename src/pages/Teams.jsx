@@ -51,7 +51,7 @@ export default function Teams() {
                 key={team.id}
                 onClick={() => setSelected(selected?.id === team.id ? null : team)}
                 className={`border-t border-[#131313]/5 cursor-pointer transition hover:bg-[#131313]/5 ${
-                  idx < 4 ? 'bg-white' : 'bg-white'
+                  idx < 4 ? 'bg-green-50/30' : 'bg-white'
                 }`}
               >
                 <td className="px-4 py-3 font-semibold text-[#131313]/60">{team.standing}</td>

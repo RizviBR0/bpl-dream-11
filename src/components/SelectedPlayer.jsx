@@ -163,7 +163,10 @@ const SelectedPlayer = ({ setActiveTab }) => {
               : 'bg-[#131313]/20 text-[#131313]/40 cursor-not-allowed'
           }`}
         >
-          {canConfirm() ? '🏆 Confirm Dream Team' : `Need ${teamSize - selectedPlayers.length} more player${teamSize - selectedPlayers.length !== 1 ? 's' : ''}`}
+          {(() => {
+            const remaining = teamSize - selectedPlayers.length;
+            return canConfirm() ? '🏆 Confirm Dream Team' : `Need ${remaining} more player${remaining !== 1 ? 's' : ''}`;
+          })()}
         </button>
       </div>
 

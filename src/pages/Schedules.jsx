@@ -191,7 +191,7 @@ export default function Schedules() {
 }
 
 function TeamBadge({ name, color }) {
-  const short = name?.substring(0, 2).toUpperCase() || '??';
+  const short = name && name.trim() ? name.substring(0, 2).toUpperCase() : '??';
   return (
     <div className="flex items-center gap-1.5">
       <span
